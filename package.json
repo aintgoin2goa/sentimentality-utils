@@ -1,0 +1,29 @@
+{
+  "name": "sentimentality-utils",
+  "version": "1.0.0",
+  "description": "Shared code for the sentimentality lambda functions",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aintgoin2goa/sentimentality-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aintgoin2goa/sentimentality-utils/issues"
+  },
+  "homepage": "https://github.com/aintgoin2goa/sentimentality-utils#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "proxyquire": "^1.7.9",
+    "sinon": "^1.17.4"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.3.17"
+  }
+}
