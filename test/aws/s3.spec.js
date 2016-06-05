@@ -30,5 +30,19 @@ describe('s3 Adaptor', function(){
 				expect(arg).to.deep.equal(expected);
 			});
 	});
+	
+	it('Should be able to retrieve an item from a bucket', () => {
+		let bucket = 'bucket';
+		let uid = 'uid';
+		let expected = {
+			Key: uid
+		};
+		return s3.retrieve(bucket, uid)
+			.then(() => {
+				sinon.assert.called(awsSdkStub.getS3Stub().getObject);
+				let arg = awsSdkStub.getS3Stub().getObject.lastCall.args[0];
+				expect(arg).to.deep.equal(expected);
+			})
+	})
 
 });

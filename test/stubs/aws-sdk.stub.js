@@ -15,7 +15,8 @@ const documentClientStub =  {
 };
 
 const s3Stub = {
-	upload: getStubbedMethod(null)
+	upload: getStubbedMethod(null),
+	getObject: getStubbedMethod(null, {Body: {toString: () => '{"foo":"bar"}'}})
 };
 
 module.exports = {
