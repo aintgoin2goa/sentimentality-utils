@@ -14,11 +14,16 @@ const documentClientStub =  {
 	scan: getStubbedMethod(null, scanResult)
 };
 
+const s3Stub = {
+	upload: getStubbedMethod(null)
+};
+
 module.exports = {
-	S3 : sinon.spy(),
+	S3 : sinon.stub().returns(s3Stub),
 	DynamoDB : {
 		DocumentClient : sinon.stub().returns(documentClientStub)
 	},
-	getDocumentClientStub: () => documentClientStub
+	getDocumentClientStub: () => documentClientStub,
+	getS3Stub: () => s3Stub
 };
 
