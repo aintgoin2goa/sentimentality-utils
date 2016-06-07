@@ -24,6 +24,7 @@ module.exports = {
 	DynamoDB : {
 		DocumentClient : sinon.stub().returns(documentClientStub)
 	},
+	EnvironmentCredentials: sinon.stub().returns({}),
 	getDocumentClientStub: () => documentClientStub,
 	getS3Stub: () => s3Stub
 };
