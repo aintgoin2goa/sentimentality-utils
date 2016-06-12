@@ -1,6 +1,6 @@
 {
   "name": "sentimentality-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared code for the sentimentality lambda functions",
   "main": "main.js",
   "scripts": {
