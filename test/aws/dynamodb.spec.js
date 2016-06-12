@@ -92,6 +92,26 @@ describe('Dynamodb Adaptor', function(){
 				let arg = AwsSdkStub.getDocumentClientStub().scan.lastCall.args[0];
 				expect(arg).to.deep.equal(expected);
 			})
-	})
+	});
+
+	it('Should be able to find an item using multiple fields', () => {
+		let table = 'table';
+		let name1 = 'name1';
+		let value1 = 'value1';
+		let name2 = 'name2';
+		let value2 = 'value2';
+		let expected = {
+			TableName : table,
+			FilterExpression : `${name1} = :name1 AND ${name2} = :name2`,
+			ExpressionAttributeValues : {':name1' : value1, ':name2' : value2 }
+		};
+
+		return dynamodb.find(table, {name1:value1, name2:value2})
+			.then(() => {
+				sinon.assert.called(AwsSdkStub.getDocumentClientStub().scan);
+				let arg = AwsSdkStub.getDocumentClientStub().scan.lastCall.args[0];
+				expect(arg).to.deep.equal(expected);
+			})
+	});
 	
 });
