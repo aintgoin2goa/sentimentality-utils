@@ -10,7 +10,7 @@ describe('Elastic Search Adaptor', () =>{
 	
 	before(() => {
 		fetchStub.setup({});
-		elasticsearch = proxyquire('../../lib/aws/elasticsearch', {'node-fetch': fetchStub.fetch});
+		elasticsearch = proxyquire('../../lib/aws/elasticsearch', {'signed-aws-es-fetch': fetchStub.fetch});
 	});
 
 	it('Should be able to send data to elastic search', () => {
@@ -21,10 +21,12 @@ describe('Elastic Search Adaptor', () =>{
 				sinon.assert.called(fetchStub.fetch);
 				let url = fetchStub.fetch.lastCall.args[0];
 				let options = fetchStub.fetch.lastCall.args[1];
+				let creds = fetchStub.fetch.lastCall.args[2];
 				expect(url).to.contain(publication);
 				expect(url).to.contain('es.amazonaws.com');
 				expect(url).to.contain('_bulk');
 				expect(options.body).to.contain(JSON.stringify(data));
+				expect(creds).to.be.an('object');
 			})
 	});
 });

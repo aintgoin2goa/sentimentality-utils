@@ -24,6 +24,7 @@
     "sinon": "^1.17.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.3.17"
+    "aws-sdk": "^2.3.17",
+    "signed-aws-es-fetch": "^1.3.0"
   }
 }
